@@ -37,11 +37,11 @@ const SidebarContainer = styled(Box)(({ theme }) => ({
   borderRight: `1px solid ${defaultTheme.palette.secondary.main}`
 }))
 
-export const Sidebar = () => {
+export const Sidebar = ({ photoURL }: any) => {
 
   return (
     <SidebarContainer>
-      <HeaderSidebar />
+      <HeaderSidebar photoURL={photoURL} />
       {messages.map((item, index) => (
         <CardMessage
           key={index}

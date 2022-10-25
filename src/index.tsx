@@ -12,17 +12,21 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 )
 
-root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={defaultTheme}>
-      <Router>
-        <Routes>
-          <Route path = "/login" element = { <Login /> } />
-          <Route path = "/chat" element = { <Chat /> } />
-        </Routes>
-      </Router>
-    </ThemeProvider>
-  </React.StrictMode>
-)
+const App = () => {
+  return (
+    <React.StrictMode>
+      <ThemeProvider theme={defaultTheme}>
+        <Router>
+          <Routes>
+            <Route path="/" element={ <Chat /> } />
+            <Route path="/login" element={ <Login /> }/>
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </React.StrictMode>
+  )
+}
+
+root.render(<App />)
 
 reportWebVitals()

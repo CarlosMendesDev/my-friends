@@ -21,11 +21,12 @@ const HeaderContainer = styled(Box)(({ theme }) => ({
   paddingRight: '16px'
 }))
 
-export const HeaderSidebar = () => {
+export const HeaderSidebar = ({ photoURL }: any) => {
+
   return (
     <HeaderContainer>
       <Avatar
-        src='https://github.com/samukdev.png'
+        src={photoURL}
         sx={{
           border: `1px solid ${defaultTheme.palette.secondary.contrastText}`,
           cursor: 'pointer'

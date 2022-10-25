@@ -8,9 +8,12 @@ import {
   Button,
   IconButton
 } from '@mui/material'
+import { GmailSVG } from '../icons/GmailSVG'
 import { defaultTheme } from '../themes/defaultTheme'
 import { SocialIcon } from 'react-social-icons'
 import { TextingImage } from '../Components/TextingImage'
+import { auth, provider } from "../services/firebase"
+import { useNavigate } from "react-router-dom"
 
 const Section = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -23,6 +26,14 @@ const Section = styled(Box)(({ theme }) => ({
 }))
 
 export const Login = () => {
+  const navigate = useNavigate();
+
+  const handleSignin = () => {
+    auth.signInWithPopup(provider)
+      .then((response) => navigate('/'))
+      .catch(alert)
+  }
+
   return (
     <Stack direction={{ xs: 'column', sm: 'row' }}>
       <Section sx={{ backgroundColor: defaultTheme.palette.secondary.contrastText }}>
@@ -45,13 +56,14 @@ export const Login = () => {
           }}
           disableElevation
           variant="contained"
+          onClick={() => navigate('/chat')}
         >
           Entar
         </Button>
 
         <Box>
-          <IconButton aria-label="delete">
-            <SocialIcon url='https://google.com/'/>
+          <IconButton onClick={handleSignin}>
+            <GmailSVG />
           </IconButton>
 
           <IconButton aria-label="delete">
